@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code 색상 테마 종합 테스트</title>
+    
+    <style>
+        /* [CSS 영역] 속성명, 숫자, 데이터 타입 색상 테스트 */
+        body {
+            background-color: #282c34;
+            color: #abb2bf;
+            margin: 0;
+            padding: 20px;
+        }
+        .highlight-text {
+            font-weight: bold;
+            color: #e06c75; /* 산호색 포인트 */
+        }
+        a {
+            color: #71abda;
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <h1>ROG Zephyrus S17 작업 및<br>게이밍 일지</h1>
+        <nav>
+            <a href="https://www.cyberpunk.net/us/ko/">Cyberpunk 2077</a> |
+            <a href="https://hello.vrchat.com/">VRChat 맵 제작</a> |
+            <a href="https://www.kojimaproductions.jp/en/death-stranding-2">Death Stranding 2</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cyberpunk" class="game-section">
+            <h2>사이버펑크 2077 다회차 모드 설정</h2>
+            <p>RTX 3070 그래픽 카드를 활용한 <span class="highlight-text">몰입감 극대화</span> 세팅입니다.</p>
+            <ul>
+                <li>환경 텍스처 오버홀 모드</li>
+                <li>광원 및 레이트레이싱 최적화 패치</li>
+            </ul>
+        </section>
+
+        <br> <section id="vrchat">
+            <h2>VRChat 방송용 맵 제작 워크플로우</h2>
+            <div>
+                블렌더(Blender)에서 무료 애드온을 활용하여 모델링을 진행한 후,<br>
+                유니티(Unity)로 넘겨서 방송 환경에 맞게 최적화합니다.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Broadcasting & Gaming. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // [Javascript 영역] 변수, 연산자, 키워드, 함수 색상 테스트
+        const laptopModel = "ROG Zephyrus S17";
+        let playTime = 120.5;
+        let isOptimized = true;
+
+        function checkOptimization(time, status) {
+            // 연산자(>=, ===) 및 괄호 색상 확인
+            if (time >= 100 && status === true) {
+                console.log(laptopModel + " 세팅이 완벽하게 적용되었습니다.");
+            }
+        }
+
+        checkOptimization(playTime, isOptimized);
+    </script>
+</body>
+</html>
