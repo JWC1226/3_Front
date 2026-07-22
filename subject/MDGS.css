@@ -1,0 +1,281 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+/* 중앙 정렬 컨테이너 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 공통 포인트 컬러 설정 */
+/* 배운 부분은 아니지만, 편의상 필요성 느낌 */
+:root {
+    --point-color: #c1a255; /*포인트 색감*/
+    --alert-color: #bc6363; /*경고/중요도 색상*/
+    --panel-bg: #1e1e1e;    /*다크 패널 색상*/
+    --hover-bg: #2a2a2a;    /*호버 색상*/
+}
+/* ------------------------------------ */
+/* 배너 영역 */
+.top-banner {
+    background-color: #171717;
+    border-bottom: 1px solid #333;
+    padding: 15px 0;
+}
+.banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--point-color);
+    cursor: pointer;
+}
+
+/*검색창*/
+.search-box input {
+    width: 350px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.search-box input:focus {
+    border-color: var(--point-color);
+}
+
+/* 사용자 탭 */
+.user-actions {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+}
+.user-actions a:hover {
+    color: var(--point-color);
+}
+
+/* ------------------------------------ */
+/* 상단 영역: 카테고리 */
+.main-menu ul {
+    list-style: none;
+}
+.main-menu > .container > ul {
+    display: flex;
+}
+ 
+.main-menu > .container > ul > li {
+    position: relative;
+}
+.main-menu > .container > ul > li > a {
+    display: block;
+    padding: 15px 25px;
+    font-weight: 500;
+}
+.main-menu > .container > ul > li > a:hover {
+    color: var(--point-color);
+    background-color: var(--hover-bg);
+}
+
+/* sub-menu 기본 숨김 처리 및 호버시 표시 */
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: #222;
+    border: 1px solid #333;
+    z-index: 100;
+}
+.main-menu li:hover .sub-menu {
+    display: block;
+}
+.sub-menu li a {
+    display: block;
+    padding: 12px 20px;
+    border-bottom: 1px solid #333;
+}
+.sub-menu li a:hover {
+    background-color: #333;
+    color: var(--point-color);
+}
+/* ------------------------------------ */
+/* 메인 영역: 게임 광고 탭 */
+.hero-slider {
+    display: flex;
+    height: 380px;
+    margin: 30px 0;
+    background-color: var(--panel-bg);
+    border: 1px solid #333;
+}
+
+/*  광고 탭 화살표 영역 */
+.slider-side {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+/* 측면 전체 마우스 포인터 효과 */
+.slider-side:hover {
+    background-color: rgba(193, 162, 85, 0.2);
+    color: var(--point-color);
+}
+
+/* 메인 이미지 영역 */
+.slider-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2a2a;
+    font-size: 18px;
+    color: #888;
+}
+/* ------------------------------------ */
+/* 중간 영역: 공지사항 */
+.notice-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+/* 중요 공지 (비어있을 경우, 숨김 처리) */
+.notice-urgent {
+    order: 1;
+    background-color: var(--alert-color);
+    color: #fff;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+/* 특수 경우: 텍스트가 없을 경우 반응하는 코드 */
+.notice-urgent:empty {
+    order: 3;
+    display: none;
+}
+
+/* 일반 공지 */
+.notice-general {
+    order: 2;
+    background-color: var(--panel-bg);
+    border: 1px solid #333;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: #ccc;
+}
+/* ------------------------------------ */
+/* 하단 영역: 게임 카테고리 및 표시창 */
+.game-content-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+.game-list-area {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.game-category-title {
+    background-color: #252525;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid var(--point-color);
+    margin-bottom: 10px;
+}
+.game-card {
+    height: 250px;
+    background-color: var(--panel-bg);
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.game-card:hover {
+    border-color: var(--point-color);
+    background-color: #2d2d2d;
+    transform: translateY(-5px);
+}
+
+/* 우측 게임 정보 프리뷰 */
+.game-preview-area {
+    flex: 1;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+.preview-content {
+    text-align: center;
+    color: #999;
+}
+/* ------------------------------------ */
+/* Footer 영역 */
+.main-footer {
+    background-color: #151515;
+    border-top: 1px solid #222;
+    padding: 40px 0;
+    text-align: center;
+}
+/* 이용약관 */
+.footer-links {
+    margin-bottom: 15px;
+}
+.footer-links a {
+    color: #bbb;
+    margin: 0 10px;
+}
+.footer-links a:hover {
+    color: var(--point-color);
+}
+
+.divider {
+    color: #444;
+}
+
+/* Copyright */
+.copyright {
+    color: #888888;
+    font-size: 13px;
+}
