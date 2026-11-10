@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .area {
+            border: 1px solid #ec240a;
+            width: 300px;
+            min-height: 50px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>widow 객체</h1>
+    <p>
+        자바스크립의 최상위 개체 브라우저창을 제어<br>
+        document location screen navigator
+        history등 객체를 포함
+
+    </p>
+
+    <h3>타이머 함수 (setTimeout/ setInterval)</h3>
+    <p>
+        -setTimeout : 지정한 시간이 지난 후 함수를 1회 실행 <br>
+        -setInterval : 지정한 시간 간격마다 함수를 반복 실행
+    </p>
+    <button onclick="timetest()">2초뒤에 한번만 실행</button>
+    <button onclick="start()">시계시작</button>
+    <button onclick="stop()">시계정지</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+        function timetest() {
+            console.log("--타이머 테스트 시작");
+            const timer = setTimeout(function() {
+                document.querySelector("#area1").style.backgroundColor = 'skyblue';
+            }, 2000);
+            //clearTimeout(timer);
+            console.log("--타임테스트끝--")
+            
+        }
+        let timer2 = null;
+
+        function start() {
+                 timer2 = setInterval(function() {
+                    const now = new Date();
+                    const hour = now.getHours();
+                    const mint = now.getMinutes();
+                    const sec = now.getSeconds();
+
+                    document.getElementById("area1").textContent =
+                    `${hour} : ${mint} : ${sec}`;
+                }, 1000
+            );
+            }
+
+        
+        function stop() {
+            clearInterval(timer2);
+        }
+    </script>
+    <h3>팝업창 열고닫기</h3>
+    <h4>widnow.open()</h4>
+    <button onclick="openpop()">네이버 팝업열기</button>
+    <script>
+        function openpop() {
+            const popup = window.open("http://www.naver.com", "naverpop", "width=500, height = 500");
+            setTimeout(function() {
+                popup.close();
+            },2000);
+        }
+    </script>
+    <h3>주소창 제어: location</h3>
+    <button onclick="console.log(location);">객체확인</button>
+    <button onclick="location.reload();">페이지 새로고침</button>
+    <button onclick="location.href='http://www.naver.com';">페이지이동</button>
+    <button onclick="location.replace('http://www.naver.com');">페이지이동</button>
+    <h3>그외 객체들 :history screen navigator</h3>
+    <button onclick="history.back()">뒤로가기</button>
+    <button onclick="console.log(screen)">로그</button>
+    <button onclick="console.log(navigator)">내비</button>
+</body>
+</html>

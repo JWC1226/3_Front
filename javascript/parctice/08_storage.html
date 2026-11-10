@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹스토리지</title>
+    <style>
+         .area {
+            border: 1px groove #7309c9;
+            width: 300px;
+            min-height: 50px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>웹스토리지</h1>
+    <p>
+        브라우저 내부에 데이터를 키값을 쌍으로 저장하는 공간 <br>
+        -localstroage : 영구저장 (브라우저나 탭을 닫아도 데이터가 유지됨) <br>
+        -sessionstroage : 탭단위 저장   (해당 탭을 닫으면 데이터가삭제됨 ) <br>
+        주요 메소드 setItem(key,value) getItem(key) removeItem(key) clear() <br>
+        참고 웹스토리지 문자열 형태 데이터만 저장할수 있음
+    </p>
+    <h3>localStorage</h3>
+    <p>
+        브라우저를 닫거나 다시 열어도 유지되어야 하는 데이터에 사용 <br>
+        사용자 설정 다크모드 라이트모드 언어 설정<br>
+        비회원 장바구니 : 로그인 전 장바구니 데이터를 임시보관 <br>
+        오늘 하루 이 창 보지 않기 : 팝업창 만료 시간 및 상태 저장
+    </p>
+    
+    <input type="text" id="memo">
+    <button onclick="savememo()">저장</buttonㅐ>
+    <button onclick="loadmemo()">조회</button>
+    <button onclick="removememo()">삭제</button>
+    <div class="area" id="area1"></div>
+    <script>
+        function savememo() {
+            const memov = document.getElementById("memo").value;
+            localStorage.setItem("memo",memov);
+            document.getElementById("area1").textContent = "저장완료";
+
+
+        }
+        function loadmemo() {
+            const val = localStorage.getItem("memo");
+
+            const area1 = document.getElementById("area1");
+
+            if (val != null) {
+                area1.textContent = "조회결과" + val;
+            }else {
+                area1.textContent = "저장된값이없습니다";
+            }
+
+        }
+        function removememo() {
+            localStorage.removeItem("memo");
+
+            document.getElementById("area1").textContent = "삭제완료";
+        }
+    </script>
+    <h3>sessionStroage</h3>
+    <p>
+        데이터가 영구적으로 남으면 안되거나 현재 탭이 유지되는 동안만  일시적으로 저장
+        작성 폼 백업 : 게시글 작성 중 실수로 새로고침 해도 작성중인 내용 유지
+        목록상태 유지 : 상품목록 스크롤 위치 및 필터조건을 유지하면서 상세 페이지에서 돌아왔을때    복원
+
+    </p>
+    <button onclick="savememo2()">저장</button>
+    <button onclick="loadmemo2()">조회</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        function savememo2() {
+            sessionStorage.setItem("memo2","빵");
+            document.getElementById("area2").textContent = "저장완료";
+
+        }
+        function loadmemo2 () {
+            document.getElementById("area2").textContent = sessionStorage.getItem("memo2");
+        }
+    </script>
+    <h3>전체비우기 clear</h3>
+    <button onclick="localStorage.clear()">비우기</button>
+    <button onclick="sessionStorage.clear()">세션비우기</button>
+    
+</body>
+</html>

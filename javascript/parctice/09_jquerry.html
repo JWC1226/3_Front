@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라이브러리</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .area {
+            border: 1px groove #0fe708;
+            width: 300px;
+            min-height: 50px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jquery</h1>
+    
+    <script>
+        /*
+        //모든요소가 로드되었을때  : load DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function(){
+            console.log("===Dom 로드 완료====");
+        });
+        */
+        $(function() {
+            console.log("===Dom 로드 완료====");
+        });
+
+
+    </script>
+    <h3>선택자와 스타일</h3>
+    <p class="txt">문단1</p>
+    <p class="txt">문단2</p>
+    <h5 id="css-box">제목 5</h5>
+    <button id="css-btn">스타일 변경</button>
+    <script>
+        $(function(){
+            //dom 요소 선택 : $css선택자
+            console.log($(".txt"));
+            console.log($("#css-box"));
+
+            //이벤트  핸들러 등록 (정의)
+            // $(css선택자).이벤트명(핸들러함수)
+            //[스타일변경] 버튼 클릭시 특정 요소의 스타일 변경
+            $("#css-btn").click(function() {
+                //p태그의 글자 색상  글자 크기 변경
+                //스타일변경 : $(css선택자).css(적용할스타일)
+                $(".txt").css({
+                    "color":"red",
+                    "font-size": "20px"
+                });
+                //h5에는 글자색만 변경
+                $("#css-box").css("color","purple");
+            });
+        })
+    </script>
+    <h3>값을 조작- html/text/value  </h3>
+    <div class="area" id="box"></div>
+    <input type="text"  id="user-name" placeholder="이름입력">
+    <button id="apply-btn">적용</button>
+    <script>
+
+        $(function(){
+            //[적용] 버튼 클릭 이벤트 핸들러 등록
+            $("#apply-btn").click(function(){
+                //입력요소의 값
+                //=> val()
+                const name = $("#user-name").val();
+                //특정 요소에 값을 출력 textContent
+                //=>.text
+                $("#box").text(name);
+                //html 태그를 해석하여 출력 : innerHTML
+                // => .html()
+                $("#box").html("<strong>"+name+"</strong>");
+            });
+        });
+    </script>
+
+</body>
+</html>

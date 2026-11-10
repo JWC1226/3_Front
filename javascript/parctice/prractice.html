@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라이브러리</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .area {
+            border: 1px groove #0fe708;
+            width: 300px;
+            min-height: 50px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+   <h3>값을 조작 - html/text/value</h3>
+<div class="area" id="box2">여기에 나이가 표시됩니다.</div>
+
+<label>태어난 년도:</label>
+<input type="text" id="user-name2" placeholder="예: 2000">
+<button id="apply-btn2">적용</button>
+
+<br><br>
+
+<label>현재 년도:</label>
+<input type="text" id="user-name3" placeholder="예: 2026">
+<button id="apply-btn3">적용</button>
+
+<script>
+    // 1. 필요한 요소(DOM) 가져오기
+    const box2 = document.getElementById('box2');
+    const inputBirth = document.getElementById('user-name2');
+    const inputCurrent = document.getElementById('user-name3');
+    const btn2 = document.getElementById('apply-btn2');
+    const btn3 = document.getElementById('apply-btn3');
+
+    // 2. 나이를 계산해서 화면에 뿌려주는 함수
+    function calculateAge() {
+        // input 요소의 값(value)을 가져와 숫자로 변환
+        const birthYear = Number(inputBirth.value);
+        const currentYear = Number(inputCurrent.value);
+
+        // 입력값이 비어있는지 확인
+        if (!inputBirth.value || !inputCurrent.value) {
+            box2.innerText = "태어난 년도와 현재 년도를 모두 입력해주세요.";
+            return;
+        }
+
+        // 한국식 만 나이 또는 만나이 계산 (현재년도 - 태어난년도)
+        const age = currentYear - birthYear;
+
+        if (age < 0) {
+            box2.innerText = "현재 년도가 태어난 년도보다 작을 수 없습니다.";
+        } else {
+            // textContent나 innerHTML/innerText로 div 내용을 조작
+            box2.innerText = `현재 나이는 세는나이 기준 ${age + 1}세 (만 ${age}세) 입니다.`;
+        }
+    }
+
+    // 3. 버튼에 클릭 이벤트 연결
+    btn2.addEventListener('click', calculateAge);
+    btn3.addEventL
+    </script>
+
+</body>
+
+</html>

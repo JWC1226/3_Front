@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom 요소조작</title>
+     <style>
+        .area {
+            border: 1px double #d44ce0;
+            width: 300px;
+            min-width: 50px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        .active {
+            background-color: rgb(204, 75, 16);
+        }
+        .on {
+            font-weight: bold;
+            color: rgb(17, 218, 151);
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM 요소 조작</h1>
+    <h3>속성과 스타일 변경</h3>
+    <div id="box" class="area">box 영역</div>
+    <button onclick="change()">변경</button>
+    <script>
+        function change() {
+            const aa = document.querySelector("#box");
+
+            aa.style.color = 'blue';
+            aa.style.backgroundColor = '#eee';
+            
+            aa.setAttribute('date-role', 'admin');
+
+            console.log(aa.style.backgroundColor);
+            console.log(aa.getAttribute('data-role'));
+
+
+            
+
+
+        }
+    </script>
+    <h3>ClassList</h3>
+    <div class="area" id="classBox">클래스 박스 영역</div>
+    <button onclick="addandremove('add')">add</button>
+    <button onclick="addandremove('remove')">remove</button>
+    <button onclick="toggle()">toggle</button>
+    <button onclick="checkClass()">check</button>
+    <script>
+        function addandremove(type) {
+            console.log(type);
+            const box = document.querySelector("#classBox");
+            switch(type) {
+                case 'add' : 
+                box.classList.add('active');
+                break;
+                case 'remove':
+                    box.classList.remove('active')
+                    break;
+            }
+            console.log(box.classList);
+            console.log(box.className);
+
+        }
+        function toggle() {
+           const box = document.querySelector("#classBox");
+            box.classList.toggle('active');
+        }
+        function checkClass() {
+            const box = document.querySelector("#classBox");
+            const hasActive = box.classList.contains('active');
+            console.log("active 클래스 존재여부 " + hasActive);
+            if(hasActive) {
+                alert('acticve 클래스 존재확인');
+            }
+        }
+    
+    </script>
+    <h3>요소(노드) 생성 추가 제거</h3>
+    <div class="area" id="wrap"></div>
+    <button onclick="addEl();">요소추가</button>
+    <button onclick="removelast()">마지막 요소 제거</button>
+    <button onclick="removeall()">내부 요소 모두 제거</button>
+    <script>
+        function addEl() {
+            const h6El = document.createElement("h6");
+            h6El.textContent = "추가된 요소";
+            const wrap = document.querySelector("#wrap");
+            wrap.appendChild(h6El);
+
+        }
+        function removeall() {
+            const wrap = document.querySelector("#wrap");
+            wrap.textContent  = "";
+        }
+        function removelast() {
+            const h6L = document.querySelectorAll("#wrap h6");
+
+            console.log(h6L.length);
+            if (h6L.length>0) {
+                h6L[h6L.length - 1].remove();
+            }else{
+                alert("삭제할항목이 없습니다");
+            }
+
+        }
+
+
+
+    </script>
+
+</body>
+</html>

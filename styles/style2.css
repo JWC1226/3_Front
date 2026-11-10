@@ -1,0 +1,188 @@
+/* 공통 리셋 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ul, li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+body { font-family: "Noto Sans KR", sans-serif; color: #2b3440; line-height: 1.6; }
+
+/* 폭 가두기 + 가운데 정렬 */
+.wrapper { width: 100%; max-width: 960px; margin: 0 auto; padding: 24px; }
+
+ul,ol,li {list-style: none;}
+a {text-decoration: none;
+color: inherit}
+input{
+    outline: none;
+}
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #dadada;
+    align-items: center;
+    background-color: blue;
+    width: 100%;
+}
+
+.logo1 {
+ 
+  font-size: 30px;
+  color: #dadada;
+
+   position: absolute;
+   left: 40%;
+  
+
+}
+.header_util {
+  margin-left: auto;
+  color: antiquewhite;
+  display: flex;
+  gap: 12px;
+}
+.AA:hover {
+  color: aquamarine;
+}
+.BB:hover {
+  color: rgb(226, 114, 23);
+}
+
+.menu{
+  background: linear-gradient(80deg,  #bd3434, #6ca54b, #37580b);
+  color: rgb(229, 234, 238);
+}
+.menu > ul{
+ display: flex;
+ text-align: center;
+ justify-content: space-around;             
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+
+  
+}
+.menu >ul >li {
+    flex: 1;
+   
+
+    position: relative;
+}
+.menu >ul >li >a {
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    padding: 16px 8px;
+}
+.menu >ul >li >a:hover {
+    color: rgb(175, 132, 76);
+}
+.menu ul ul {
+display: none;              /* 평소에는 안 보이게 숨김 */
+  position: absolute;
+  top: 100%;                  /* 주메뉴 바로 아래 붙이기 */
+  left: 50%;                  /* 주메뉴 중앙 위치로 이동 */
+  transform: translateX(-50%);/* 서브메뉴 자체를 정확히 가운데 정렬 */
+  
+  width: 100%;                /* 주메뉴 버튼 너비와 동일하게 맞춤 (필요시 조정 가능) */
+  min-width: 120px;           /* 글자가 잘리지 않도록 최소 너비 지정 */
+  
+  background-color: #9bbe48;
+  color: #e2d6d6;
+  border: 1px solid #cccccc;
+  border-top: 0;
+  z-index: 99; 
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 주메뉴에 마우스 올리면 서브메뉴 등장 */
+.menu > ul > li:hover > ul {
+  display: block;
+}
+
+.menu ul ul a {
+  font-size: 14px;
+  padding: 10px 0;
+  font-weight: 500;
+  display: block;
+  color: #555;
+}
+
+.menu ul ul a:hover {
+  font-weight: 700;
+  background-color: #f0f0f0;
+  color: #bd3434;
+}
+/* 본문 2분할 (7 : 3) */
+.main { display: flex; gap: 24px; align-items: flex-start; }
+.content { flex: 7; }
+.side    { flex: 3; }
+
+/* 좁은 화면: 한 줄로 쌓기 */
+@media (max-width: 640px) {
+  .main { flex-direction: column; }
+}
+main section > * {
+    margin-top: 20px;
+}
+.content{
+background: linear-gradient(120deg, #000, #5c5cff, #a3a1ff);    
+padding: 40px;
+color: white;
+border-radius: 14px;
+}
+
+.content .thumb {
+  background-image: url('/javascript/parctice/dog.gif');
+  height: 300px;              /* 200px -> 350px 이상으로 높이 확대 */
+  background-size: cover;
+  background-position: center;  /* 중앙 위치 기준 */
+}
+
+.side {
+  border: 1px double #000;
+  background-color: #e7c4c4;
+  width: 100%;
+  padding: 16px;
+  
+  /* 내부 요소들을 무조건 위 -> 아래 수직으로 나열 */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; 
+}
+
+.side h3 {
+  font-size: 24px;
+}
+
+/* 입력창 및 버튼 너비 맞춤 */
+.side input, 
+.side .btn {
+  width: 100%;
+  padding: 8px;
+  display: block;
+}
+
+/* 방문신청 '아래'에 들어갈 빨간 상자 */
+.bside {
+  background-color: #bd3434;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  width: 100%; /* 부모 박스 너비에 딱 맞춤 */
+  margin-top: 8px;
+}
+
+ .loct {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.7;
+
+ }
+ footer .copy {
+  text-align: center;
+    margin-top: 14px;
+    color: #d32c0f;
+ }

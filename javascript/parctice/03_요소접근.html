@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom요소접근</title>
+    <style>
+        .area {
+            border: 1px dotted #c2a817;
+            width: 300px;
+            min-width: 50px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM요소에 접근하기</h1>
+    <h3>아이디로 접근 - getElementById(아이디명)</h3>
+    <div class="area" id="area1"></div>
+    <button onclick="acessId()">아이디로 접근</button>
+    <script>
+        function acessId() {
+        const area1 = document.getElementById("area1");
+        area1.textContent = "아이디로 정상접근!";
+        area1.style.backgroundColor = "yellow";
+
+        
+        }
+    </script>
+    <h3>태그명으로 접근 - getElementsByTagName(태그명)</h3>
+    <ul>
+        <li>li 태그 내용</li>
+        <li>li 태그 내용</li>
+        <li>li 태그 내용</li>
+    </ul>
+
+    <button onclick="accesstag()">태그로 접근</button>
+    <script>
+        function accesstag() {
+            const liList = document.getElementsByTagName("li");
+
+            console.log(`li 요소 개수: ${liList.length}`);
+            for (let i =0; i<liList.length; i++) {
+                liList[i].textContent = i + "번째 li";
+                console.log(liList[i].textContent);
+            }
+        }
+    </script>
+    <h3>선택자로 접근
+        -querySelector / querySelectorAll
+
+    </h3>
+    <div id="area2">카이</div>
+    <p class="item">아이템 a</p>
+    <p class="item">아이템 b</p>
+    <p class="item">아이템 c</p>
+    <button onclick="acessSelector()">선택자로 접근</button>
+
+    <script>
+        function acessSelector() {
+            const one = document.querySelector("#area2");
+            console.log(one);
+     
+            one.style.fontweight = "bold";
+            const all = document.querySelectorAll(".item");
+            console.log(all);
+        
+        all.forEach(function(item,index) {
+            item.style.color = "red";
+        });
+}
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <style>
+        .area {
+            border: 1px solid #1bda0a;
+            width: 300px;
+            min-height: 50px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        .good {
+            font-weight: bold;
+            color: blue;
+        }
+        .bad {
+            font-weight: bold;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+        <h1>정규 표현식(regular expression)</h1>
+        <p>
+            문자열에서 특정 규칙을 가진 패턴을 찾고 검사하고 치환하는데 사용되는 표현 방식
+
+        </p>
+        <h3>메소드 : test / exec </h3>
+        <button onclick="test1()">실행</button>
+        <div class="area" id="area1"></div>
+
+        <script>
+            function test1() {
+                const area1 = document.querySelector("#area1");
+
+                const str = "javascript jquery";
+
+                const regexp1 = new RegExp("script");
+
+                const regexp2 = /script/;
+
+                area1.innerHTML += `test결과: ${regexp2.test(str)}<br>`;
+                area1.innerHTML += `test결과: ${regexp2.test("jaba")}<br>`;
+
+                area1.innerHTML += `exec결과: ${regexp2.exec(str)}<br>`;
+                area1.innerHTML += `exec결과: ${regexp2.exec("jaba")}<br>`;
+                console.log(regexp2.exec(str));
+            }
+        </script>
+        <h3>메타문자와 수량자</h3>
+        <button onclick="test2()">실행</button>
+        <div class="area" id="area2"></div>
+        <script>
+            function test2() {
+                const area2 = document.querySelector("#area2");
+                
+                area2.innerHTML += `j로 시작되는지?${/^j/.test("javascript")}<br>`;
+                area2.innerHTML += `j로 시작되는지?${/^j/.test("pyh")}<br>`;
+                area2.innerHTML += `t로 시작되는지?${/t$/.test("javascript")}<br>`;
+                
+                area2.innerHTML +=`특정패턴변경: ${"a1b2c3".replace(/[0-9]/g,'*')}<br>`;
+
+            }
+            
+            
+
+
+        </script>
+    <h4>아이디 검증</h4>
+    <p>영문대문자 소문자 숫자를 포함하여 5-12자리</p>
+    <label>
+        <input type="text" id="useid" placeholder="5~12영문숫자">
+    </label>
+    <button onclick="checkid()">검증</button>
+    <div class="area" id="area3"></div>
+    <script>
+        function checkid() {
+            const idregexp = /^[a-zA-Z0-9]{5,12}$/;
+
+            const idvlue = document.querySelector("#useid").value;
+            const area3 = document.querySelector("#area3");
+
+            if (idregexp.test(idvlue)) {
+                area3.innerHTML = "<span class = 'good'> 사용가능 </span>";
+
+            }else {
+                area3.innerHTML = "<span class = 'bad'> 사용불가 </span>";
+            }
+        }
+
+
+    </script>
+    //h3+(label>input:text)+button+area#area4
+    <h3></h3>
+    <label><input type="text" id="email" placeholder="이메일"></label>
+    <button onclick="checkemail()">검증</button>
+  <div class="area" id="area4"></div>
+  <script>
+    function checkemail() {
+        const emailregexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._]+\.[a-zA-Z]{2,}$/;
+
+        const area4 =  document.querySelector("#area4");
+        const emailvalue = document.querySelector("#email").value;
+
+        if (emailregexp.test(emailvalue)) {
+            area4.innerHTML = "<span class= 'good'> 올바른 이메일 형식 </span>";
+
+        }else {
+            area4.innerHTML = "<span class= 'bad'> 올바른 이메일 형식  아님</span>";
+        }
+
+    }
+  </script>
+
+
+</body>
+</html>
